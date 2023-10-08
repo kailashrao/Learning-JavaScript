@@ -35,3 +35,24 @@ for(let i=0; i<names1.length;i++) {
     console.log(messages1[i]);
 }
 
+// Display on HTML Page
+
+// bank-manager.html
+ function fillTable() {
+    let html = "<table> <tr> <th>Customer</th> <th>Principal ($)</th> <th>Rate (%)</th> <th>EMI ($)</th> <th>Duration (Months)</th> <th>Total Amount ($)</th> </tr>" 
+    for(let i = 0; i < names1.length; i++) {
+        html += "<tr>";
+        html += "<td>" + names1[i] + "</td>";    
+        html += "<td>$" + principal1[i] + "</td>";    
+        html += "<td>" + rate1[i] + "%</td>";    
+        html += "<td>$" + emi1[i] + "</td>";    
+        html += "<td>" + months1[i] + "</td>";
+        html += "<td>$" + amount1[i] + "</td>";
+        html += "</tr>";    
+    }
+
+    html += "</table>";
+    document.getElementById("bm-table").innerHTML = html;
+ }
+
+ fillTable();
