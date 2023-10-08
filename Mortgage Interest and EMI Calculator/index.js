@@ -28,31 +28,67 @@ for(let i = 0; i<names1.length; i++) {
 }
 
 // Display final results to console (to be displayed on HTML page)
-console.log(interest1);
+
+/* console.log(interest1);
 console.log(emi1);
 
 for(let i=0; i<names1.length;i++) {
     console.log(messages1[i]);
 }
+*/
 
 // Display on HTML Page
 
+const path = "/Mortgage%20Interest%20and%20EMI%20Calculator/"
+
 // bank-manager.html
- function fillTable() {
-    let html = "<table> <tr> <th>Customer</th> <th>Principal ($)</th> <th>Rate (%)</th> <th>EMI ($)</th> <th>Duration (Months)</th> <th>Total Amount ($)</th> </tr>" 
-    for(let i = 0; i < names1.length; i++) {
-        html += "<tr>";
-        html += "<td>" + names1[i] + "</td>";    
-        html += "<td>$" + principal1[i] + "</td>";    
-        html += "<td>" + rate1[i] + "%</td>";    
-        html += "<td>$" + emi1[i] + "</td>";    
-        html += "<td>" + months1[i] + "</td>";
-        html += "<td>$" + amount1[i] + "</td>";
-        html += "</tr>";    
+function fillTable() {
+
+    // Check active page to avoid innerHTML error due to not finding referenced id
+    if(window.location.pathname == path + "bank-manager.html"){ 
+
+        // Table header
+        let table = "<table> <tr> <th>Customer</th> <th>Principal ($)</th> <th>Rate (%)</th> <th>EMI ($)</th> <th>Duration (Months)</th> <th>Total Amount ($)</th> </tr>" 
+
+        // Table rows with data
+        for(let i = 0; i < names1.length; i++) {
+            table += "<tr>";
+            table += "<td>" + names1[i] + "</td>";    
+            table += "<td>$" + principal1[i] + "</td>";    
+            table += "<td>" + rate1[i] + "%</td>";    
+            table += "<td>$" + emi1[i] + "</td>";    
+            table += "<td>" + months1[i] + "</td>";
+            table += "<td>$" + amount1[i] + "</td>";
+            table += "</tr>";    
+        }
+
+        // Close table tag
+        table += "</table>";
+
+        // Post to HTML page at specified id
+        document.getElementById("bm-table").innerHTML = table;
+
     }
+}
 
-    html += "</table>";
-    document.getElementById("bm-table").innerHTML = html;
- }
+fillTable();
 
- fillTable();
+// james.html, peter.html, susan.html
+function printMessage() {
+
+    for(let i=0; i < names1.length; i++) {
+
+        // Check active page to avoid innerHTML error due to not finding referenced id
+        if(window.location.pathname == path + names1[i].toLowerCase() + ".html") { 
+
+            // Concatonate HTML tags and message for specific user
+            let message = "<p>" + messages1[i] + "</p>";
+
+            // Post to HTML page at specified id
+            document.getElementById(names1[i].toLowerCase()).innerHTML = message;
+        }
+    }
+}
+
+printMessage();
+ 
