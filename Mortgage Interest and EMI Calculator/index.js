@@ -27,68 +27,89 @@ for(let i = 0; i<names1.length; i++) {
     messages1.push(s1 + names1[i] + s2+principal1[i] + s3+emi1[i] + s4+months1[i] + s5); // Concatonate Final message
 }
 
-// Display final results to console (to be displayed on HTML page)
-
-/* console.log(interest1);
-console.log(emi1);
-
-for(let i=0; i<names1.length;i++) {
-    console.log(messages1[i]);
-}
-*/
 
 // Display on HTML Page
 
-const path = "/Mortgage%20Interest%20and%20EMI%20Calculator/"
+const path = "/Mortgage%20Interest%20and%20EMI%20Calculator/";
 
+// index.html
+function listUsers() {
+    let users = "";
+
+    for(let i = 0; i < names1.length; i++) {
+        users += "<li><a id=\"" + i + "\" href=\"./customer.html\">"; // List and anchor opening tags
+        users += names1[i] + "</a></li>"; // Display name and closing tags
+    }
+
+    document.getElementById("users-list").innerHTML = users;
+
+}
+    
 // bank-manager.html
 function fillTable() {
+    
+    // Table header
+    let table = "<table> <tr> <th>Customer</th> <th>Principal ($)</th> <th>Rate (%)</th> <th>EMI ($)</th> <th>Duration (Months)</th> <th>Total Amount ($)</th> </tr>"; 
 
-    // Check active page to avoid innerHTML error due to not finding referenced id
-    if(window.location.pathname == path + "bank-manager.html"){ 
-
-        // Table header
-        let table = "<table> <tr> <th>Customer</th> <th>Principal ($)</th> <th>Rate (%)</th> <th>EMI ($)</th> <th>Duration (Months)</th> <th>Total Amount ($)</th> </tr>" 
-
-        // Table rows with data
-        for(let i = 0; i < names1.length; i++) {
-            table += "<tr>";
-            table += "<td>" + names1[i] + "</td>";    
-            table += "<td>$" + principal1[i] + "</td>";    
-            table += "<td>" + rate1[i] + "%</td>";    
-            table += "<td>$" + emi1[i] + "</td>";    
-            table += "<td>" + months1[i] + "</td>";
-            table += "<td>$" + amount1[i] + "</td>";
-            table += "</tr>";    
-        }
-
-        // Close table tag
-        table += "</table>";
-
-        // Post to HTML page at specified id
-        document.getElementById("bm-table").innerHTML = table;
-
+    // Table rows with data
+    for(let i = 0; i < names1.length; i++) {
+        table += "<tr>";
+        table += "<td>" + names1[i] + "</td>";    
+        table += "<td>$" + principal1[i] + "</td>";    
+        table += "<td>" + rate1[i] + "%</td>";    
+        table += "<td>$" + emi1[i] + "</td>";    
+        table += "<td>" + months1[i] + "</td>";
+        table += "<td>$" + amount1[i] + "</td>";
+        table += "</tr>";    
     }
+
+    // Close table tag
+    table += "</table>";
+
+    // Post to HTML page at specified id
+    document.getElementById("bm-table").innerHTML = table;
+
 }
 
-fillTable();
 
-// james.html, peter.html, susan.html
-function printMessage() {
+function getId(e){
 
-    for(let i=0; i < names1.length; i++) {
-
-        // Check active page to avoid innerHTML error due to not finding referenced id
-        if(window.location.pathname == path + names1[i].toLowerCase() + ".html") { 
-
-            // Concatonate HTML tags and message for specific user
-            let message = "<p>" + messages1[i] + "</p>";
-
-            // Post to HTML page at specified id
-            document.getElementById(names1[i].toLowerCase()).innerHTML = message;
-        }
-    }
+    // Store id of clicked element in sessionStorage (Accesible over multiple HTML pages)
+    sessionStorage.setItem("id", parseInt(e.target.id));
 }
 
-printMessage();
- 
+// customer.html
+function customerPage(id) {
+    // Modify customer.html to include customer's name and specific loan message
+    let title = names1[id] + " | Bank";
+    let welcome = "Welcome " + names1[id] + "!";
+    let message = messages1[id];
+
+    document.getElementById("title").innerHTML = title;
+    document.getElementById("wlcm-msg").innerHTML = welcome;
+    document.getElementById("loan-msg").innerHTML = message;
+}
+
+
+// Execute Functions based on active page
+// Check active page to avoid innerHTML error due to not finding referenced id
+if(window.location.pathname == path + "index.html"){
+
+    listUsers(); // list users on home page
+
+    for(let i = 0; i < names1.length; i++) { 
+
+        // Add event listeners for each item in list to check for click
+        document.getElementById(i).addEventListener("click", getId); 
+    }
+
+} else if (window.location.pathname == path + "bank-manager.html") {
+    fillTable(); // Fill table for bank-manager with all customer loan stats
+
+} else if (window.location.pathname == path + "customer.html") {
+
+    // Retrieve id of clicked element from sessionStorage
+    let id = sessionStorage.getItem("id"); 
+
+    customerPage(id); // Display appropriate customer details in customer.html
+}
