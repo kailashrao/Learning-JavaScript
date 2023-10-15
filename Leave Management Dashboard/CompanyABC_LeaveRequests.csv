@@ -1,0 +1,6 @@
+Sl No,Name of Employee,Employee Id,Country_Code,Leave_From,Leave_To,Duration,Type of Leave,Status
+1,Employee34,N1240034,IN,20-Oct-2023,31-Dec-2023,73,ML,Pending
+2,Employee82,N1240082,IN,01-Nov-2023,30-Sep-2024,335,SL,Pending
+3,Employee97,N1240097,IN,15-Nov-2023,31-Mar-2024,138,ML,Approved
+4,Employee202,N1240202,IN,1-Dec-2023,31-Mar-2024,122,LWP,Pending
+5,Employee204,N1240204,IN,31-Dec-2023,30-Jun-2024,183,ML,Pending
