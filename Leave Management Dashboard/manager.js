@@ -1,19 +1,3 @@
-// Formerly index.js below
-/*
-let data1 = fetch("hello.txt");
-let data2 = data1.then(response => response.text());
-
-function getText(str1) {
-    let info1 = str1.split("\n");
-    let data3 = info1[0];
-    let data4 = info1[1];
-    document.getElementById("text1").innerHTML = data3;
-    document.getElementById("text2").innerHTML = data4;
-}
-
-data2.then(getText);
-*/
-
 // This script only needs to run in manager.html
 
 function displayData(rawCSVData) {
@@ -40,12 +24,16 @@ function displayData(rawCSVData) {
     // All other elements (index 1 and greater) contain data
     // Add table data using <td> tag
     for(let i = 1; i < lineData.length; i++) { // Iterating Through employees
-        table += "<tr>";
         
-        for(let j = 0; j < lineData[i].length; j++) { // Iterating through specific employee data
-            table += "<td>" + lineData[i][j] + "</td>"
+        // Filter to only add employees from specified Country
+        if (lineData[i][3].toLowerCase() == sessionStorage.getItem("country")) {
+            table += "<tr>";
+        
+            for(let j = 0; j < lineData[i].length; j++) { // Iterating through specific employee data
+                    table += "<td>" + lineData[i][j] + "</td>"
+            }
+            table += "</tr>";
         }
-        table += "</tr>";
     }
 
     // Post HTML code to manager.html using innerHTML
