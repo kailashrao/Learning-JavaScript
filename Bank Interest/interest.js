@@ -23,47 +23,81 @@ Then display both interest amounts and tell customer which Bank is offering a be
 
 */
 
+function interestBank1(rowData, allDays) {
+    let numRows = rowData.length;
+    let numDays = allDays.length;
 
-function formData(csvData){
-    let lines1 = csvData.split("\n");
-    let numOfLines = lines1.length;
-    let lineData1 = [];
-    for(let i = 0; i < numOfLines; i++) {
-        lineData1.push(lines1[i].split(","));
+    let principle = 0;
+    let dailyInterests = [];
+
+    let interest = 0;
+    for(let i = 0; i < numDays; i++) {
+        let included = false;
+        for(let j = 1; j < numRows; j++) {
+            if(rowData[j][0].includes(allDays[i])) {
+
+                let credit = parseFloat(rowData[j][1]);
+                if (isNaN(credit)) {
+                    credit = 0;
+                }
+
+                let debit = parseFloat(rowData[j][2]);
+                if (isNaN(debit)) {
+                    debit = 0;
+                }
+
+                principle = principle + credit - debit;
+
+                interest = principle * (1/365) * (0.05);
+                dailyInterests.push(interest);
+
+                included = true;
+                break;
+            }
+        }
+
+        if(!included) {
+            dailyInterests.push(dailyInterests[i-1]);
+        }
     }
 
-    console.log(lineData1)
+    console.table(dailyInterests);
 
-    // let principal1 = lineData1[1][1] - lineData1[1][2];
-    // let principal2 = principal1 + lineData1[2][1] - lineData1[2][2];
-    // let interest1 = principal1 * (1/365) * (5/100);
-    // let interest2 = principal2 * (1/365) * (5/100);
-    // console.log(interest1);
-    // console.log(interest2);
+    let totalInterest = 0;
+    for(let i = 0; i < numDays - 1; i++) {
+        totalInterest += dailyInterests[i];
+    }
 
-    
+    console.log(totalInterest);
 
-    let startDate = lineData1[1][0];
-    let endDate = lineData1[numOfLines-1][0];
+}
 
-    console.log(startDate);
-    console.log(endDate);
 
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let dateTime1 = new Date(startDate);
-    let date1 = dateTime1.getDate() + "-" + months[dateTime1.getMonth()] + "-" + dateTime1.getFullYear();
-    let date2 = new Date(endDate).getDate();
-    let totalDays = date2 - date1;
+function formData(csvData){
+    let lines = csvData.split("\n");
+    let numOfLines = lines.length;
+    let lineData = [];
 
-    console.log(totalDays);
+    for(let i = 0; i < numOfLines; i++) {
+        lineData.push(lines[i].split(","));
+    }
+
+    let startDate = new Date(lineData[1][0]);
+    let endDate = new Date(lineData[numOfLines-1][0]);
 
     let allDaysArray = [];
 
-    for(let i = 0; i < 62; i++) {
-        allDaysArray.push(date1 + i);
+    for(let i = new Date(startDate); i <= endDate; i.setDate(i.getDate() + 1)) {
+        let dayOfMonth = parseInt(i.getDate());
+        if (dayOfMonth < 10) {
+            dayOfMonth = "0" + dayOfMonth;
+        } 
+        allDaysArray.push((dayOfMonth + "-" + i.toLocaleString("en-US", {month: "short"}) + "-" + i.getFullYear()));
     }
 
-    console.log(allDaysArray);
+    console.table(allDaysArray);
+
+    interestBank1(lineData, allDaysArray);
 
 }
 
