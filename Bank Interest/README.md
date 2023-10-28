@@ -17,9 +17,9 @@ Which Bank is better for Suresh's cash-flow situation? And why?
 2. For each day, check if there is any credit or debit entries in given csv file
 3. If no credit/debit entries, principle is constant, else add credit/subtract debit
 4. Store this in list of daily principle values
-4. Multiply each days principle by time (1/365 for daily compounding) and rate (.05 for Bank 1)
-5. Store this in a list of daily interests
-6. Sum all the daily interests to find total interest Bank 1 owes customer
+5. Multiply each days principle by time (1/365 for daily compounding) and rate (.05 for Bank 1)
+6. Store this in a list of daily interests
+7. Sum all the daily interests to find total interest Bank 1 owes customer
 
 ## Logical Flow for Bank 2
 1. Create a list of all months included in given period
@@ -29,6 +29,6 @@ Which Bank is better for Suresh's cash-flow situation? And why?
 5. Store this in list of daily principle values
 6. Find the minimum principle and multiply by time (31/365 for monthly interest) and rate (.08 for Bank 2)
 7. Store this in a list of monthly interests
-8. Sum all hte monthly interests to find total interest Bank 2 owes customer
+8. Sum all the monthly interests to find total interest Bank 2 owes customer
 
 ### Then display both interest amounts and tell customer which Bank is offering a better deal
