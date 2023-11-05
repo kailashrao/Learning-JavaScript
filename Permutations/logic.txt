@@ -1,0 +1,12 @@
+FAST
+Part 1: F
+Part 2: AST
+
+Part 1: A
+Part 2: FST
+
+Part 1: S
+Part 2: FAT
+
+Part 1: T
+Part 2: FAS
