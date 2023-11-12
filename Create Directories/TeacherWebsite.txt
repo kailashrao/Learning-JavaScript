@@ -1,0 +1,5 @@
+English:Eshwar
+Maths:Manohar,Mani,Meera
+Physics:Parvathi,Prema
+Chemistry:Chandrika,Chirag
+Biology:Bhargav,Bhaskar
