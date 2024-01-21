@@ -1,19 +1,8 @@
 ---
-
+const pageTitle = "Landing Page"
+import MainLayout from "../layouts/MainLayout.astro"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<a href="/Learning-JavaScript/AstroJS/first-astro-site">Home</a>
-		<a href="/Learning-JavaScript/AstroJS/first-astro-site/about">About</a>
-		<a href="/Learning-JavaScript/AstroJS/first-astro-site/hobbies">Hobbies</a>
-		<h1>My Astro Frontpage</h1>
-	</body>
-</html>
+<MainLayout title="Landing Page">
+	<p>Our Landing Page wrapped in an Astro Layout</p>	
+</MainLayout>

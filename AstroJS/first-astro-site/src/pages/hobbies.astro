@@ -1,12 +1,10 @@
-<body>
-    <a href="/Learning-JavaScript/AstroJS/first-astro-site">Home</a>
-    <a href="/Learning-JavaScript/AstroJS/first-astro-site/about">About</a>
-    <a href="/Learning-JavaScript/AstroJS/first-astro-site/hobbies">Hobbies</a>
-    <h1>My Hobbies</h1>
+---
+const pageTitle = "Hobbies"
+const hobbies = ["Running", "Playing Tabla","Playing Sports", "Reading", "Personal Projects", "Learning about new tech"]
+import MainLayout from "../layouts/MainLayout.astro";
+---
+<MainLayout title=" My Hobbies">
     <ul>
-        <li>Running</li>
-        <li>Playing Tabla</li>
-        <li>Learning about tech</li>
-        <li>Making Personal Projects</li>
+        {hobbies.map((hobby)=><li>{hobby}</li>)}
     </ul>
-</body>
+</MainLayout>
