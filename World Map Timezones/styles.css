@@ -1,0 +1,64 @@
+body {
+    background-image: url('map.png');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+.slider {
+    height: 100%;
+    width: 5px;
+    background-color:black;  
+    position: absolute; 
+    top: 0px; 
+}
+
+.time {
+    display: none;
+    width: fit-content;
+    background-color: white;
+    outline: auto;
+    padding: 5px;
+    position: relative;
+}
+.slider:hover + .time {
+    display: block;
+}
+
+#t1 {
+    top: 20vh;
+    left: 7vw;
+}
+
+#t2 {
+    top: 15vh;
+    left: 18vw;
+}
+
+#t3 {
+    top: 15vh;
+    left: 34vw;
+}
+
+#t4 {
+    top: 29vh;
+    left: 48vw;
+}
+
+#t5 {
+    top: 30vh;
+    left: 54vw;
+}
+
+#t6 {
+    top: 42vh;
+    left: 60vw;
+}
+
+#t7 {
+    top: 20vh;
+    left: 68vw;
+}
+
+#t8 {
+    top: 67vh;
+    left: 71vw;
+}
