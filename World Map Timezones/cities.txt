@@ -1,3 +1,0 @@
-Asia/Kabul
-Africa/Algiers
-America/Argentina/Buenos_Aires
