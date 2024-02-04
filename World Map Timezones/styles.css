@@ -6,17 +6,22 @@ body {
 .slider {
     height: 100%;
     width: 5px;
-    background-color:black;  
+    background-color:white;
+    opacity: 0.2; 
     position: absolute; 
     top: 0px; 
 }
 
+.slider:hover {
+    opacity: 0.9;
+}
 .time {
     display: none;
     width: fit-content;
     background-color: white;
     outline: auto;
-    padding: 5px;
+    padding: 10px;
+    font-size: larger;
     position: relative;
 }
 .slider:hover + .time {
@@ -62,3 +67,17 @@ body {
     top: 67vh;
     left: 71vw;
 }
+
+#menu, #edit {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    top: 15vh;
+    left: 90vw;
+}
+
+#edit {
+    display: none;
+}
+
