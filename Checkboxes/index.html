@@ -8,20 +8,15 @@
 <body>
    <h1>Seat Selection</h1>
    <h3>Choose your seats</h3>
-   <div id="seat-container">
-
-   </div>
-   <!-- <div id="row1">
-    <label value="1">1</label>
-    <input type="checkbox"> 
-    <input type="checkbox"> 
-    <input type="checkbox"> 
-    <input type="checkbox"> 
-    <input type="checkbox"> 
-    <input type="checkbox">
-    <label value="1">1</label> 
-   </div> -->
-
+   <form id="customForm">
+    <label for="numRows">Number of Rows</label> <br>
+    <input type="number" id="numRows"> <br>
+    <label for="numSeats">Number of Seats (per row)</label> <br>
+    <input type="number" id="numSeats"> <br>
+    <input type="submit">
+   </form>
+   <br> <br>
+   <table id="seat-container"></table>
    <script src="app.js"></script>
    
 </body>
