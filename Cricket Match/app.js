@@ -66,18 +66,20 @@ function processCSV(string1) {
         }
     }
 
-    console.log("The best batsman is: " + bestBatsman + " with " + highestRuns + " runs!");
+    const batsmanMessage = "The best batsman is: " + bestBatsman + " with " + highestRuns + " runs!";
+    document.getElementById("bat").innerHTML = "<h3>" + batsmanMessage + "</h3>";
 
     let bestBowler = bowlerList[0].name;
-    let highestWickets = bowlerList[0].runs;
+    let highestWickets = bowlerList[0].wickets;
     for(let i = 1; i<bowlerList.length; i++){
         if(bowlerList[i].runs > highestWickets){
             bestBowler = bowlerList[i].name;
-            highestWickets = bowlerList[i].runs;
+            highestWickets = bowlerList[i].wickets;
         }
     }
 
-    console.log("The best bowler is: " + bestBowler + " with " + highestWickets + " wickets!");
+    const bowlerMessage = "The best bowler is: " + bestBowler + " with " + highestWickets + " wickets!";
+    document.getElementById("bowl").innerHTML = "<h3>" + bowlerMessage + "</h3>";
 
 
 }
