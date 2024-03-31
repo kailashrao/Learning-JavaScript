@@ -36,10 +36,22 @@ function processCSV(string1) {
         }
 
 
-        // const wickets = lineInfo[14] === "" ? 0 : 1;
-        // let bowler1 = new Bowler(lineInfo[6], wickets);
-        // bowlerList.push(bowler1);
-        // console.log(bowlerList);
+        let bowlerExists = false;
+        let bowlerIndex = -1;
+        for(let j = 0; j<bowlerList.length; j++){
+            if(bowlerList[j].name === lineInfo[6]) {
+                bowlerExists = true;
+                bowlerIndex = j; 
+            }
+        }
+        const wickets = lineInfo[14] === "" ? 0 : 1;
+        if(bowlerExists){
+            bowlerList[bowlerIndex].wickets += wickets;
+        }
+        else {
+            let bowler1 = new Bowler(lineInfo[6], wickets);
+            bowlerList.push(bowler1);
+        }
 
     } 
 
@@ -55,6 +67,17 @@ function processCSV(string1) {
     }
 
     console.log("The best batsman is: " + bestBatsman + " with " + highestRuns + " runs!");
+
+    let bestBowler = bowlerList[0].name;
+    let highestWickets = bowlerList[0].runs;
+    for(let i = 1; i<bowlerList.length; i++){
+        if(bowlerList[i].runs > highestWickets){
+            bestBowler = bowlerList[i].name;
+            highestWickets = bowlerList[i].runs;
+        }
+    }
+
+    console.log("The best bowler is: " + bestBowler + " with " + highestWickets + " wickets!");
 
 
 }
