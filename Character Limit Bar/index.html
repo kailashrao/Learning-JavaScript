@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
+    <link rel="stylesheet" href="styles.css" />
     <h2>Enter Text</h2>
-    <input id="text-box1" type="text" onchange="getCharLeft(50, 1)" placeholder="50 character limit" />
-    <h3 id="message1"></h3>
-    <input id="text-box2" type="text" onchange="getCharLeft(25, 2)" placeholder="25 character limit" />
-    <h3 id="message2"></h3>
+    <div class="text">
+        <input id="text-box1" type="text" onkeyup="getCharLeft(50, 1)" placeholder="50 character limit" />
+        <h3 id="message1"></h3>
+    </div>
 
 
     <script src="app.js"></script>

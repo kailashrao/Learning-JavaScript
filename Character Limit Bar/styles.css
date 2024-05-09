@@ -1,0 +1,14 @@
+body {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    align-items: center;
+    font-size: larger;
+    width: 50%;
+    margin: auto;
+}
+
+input {
+    font-size: x-large;
+}
